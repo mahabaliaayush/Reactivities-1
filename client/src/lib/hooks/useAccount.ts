@@ -4,7 +4,7 @@ import agent from "../api/agent"
 import { useNavigate } from "react-router";
 import { RegisterSchema } from "../schemas/registerSchema";
 import { toast } from "react-toastify";
-import { ChangePassSchema } from "../schemas/ChangePassSchemas";
+import { ChangePassSchema } from "../schemas/changePassSchemas";
 
 export const UseAccount = () => {
     const queryClinet = useQueryClient();

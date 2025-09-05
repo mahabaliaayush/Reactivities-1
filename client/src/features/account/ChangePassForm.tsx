@@ -1,4 +1,4 @@
-import { changePassSchema, ChangePassSchema } from "../../lib/schemas/ChangePassSchemas"
+import { changePassSchema, ChangePassSchema } from "../../lib/schemas/changePassSchemas"
 import AcFormWapper from "./AcFormWapper";
 import { Password } from "@mui/icons-material";
 import { zodResolver } from "@hookform/resolvers/zod";
