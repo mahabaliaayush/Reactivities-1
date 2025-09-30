@@ -99,6 +99,18 @@ export const UseAccount = () => {
             await agent.post('resetPassword', data);
         }
      })
+
+     const fetchGithubtoken = useMutation({
+        mutationFn: async(code: string) => {
+            const response = await agent.post(`/account/github-login?code=${code}`);
+            return response.data;
+        },
+        onSuccess: async () => {
+            await queryClinet.invalidateQueries({
+                queryKey: ['user']
+            })
+        }
+     })
     return {
         loginUser,
         currentuser,
@@ -109,6 +121,7 @@ export const UseAccount = () => {
         resentconfirmationEmail,
         changePassword,
         forgotPassword, 
-        resetPassword
+        resetPassword,
+        fetchGithubtoken
     }
 }

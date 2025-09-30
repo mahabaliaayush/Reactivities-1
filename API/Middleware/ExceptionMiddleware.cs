@@ -67,5 +67,6 @@ public class ExceptoinMiddleware(ILogger<ExceptoinMiddleware> logger, IHostEnvir
         };
         await context.Response.WriteAsJsonAsync(validationproblemdetails);
     }
+    
 }
 

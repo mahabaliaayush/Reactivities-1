@@ -31,7 +31,7 @@ public class AddCommnet
                 .ThenInclude(x => x.User)
                 .FirstOrDefaultAsync(x => x.Id == request.ActivityId, cancellationToken);
 
-            if (activity == null) return Results<CommnetDTO>.Failure("Could not Found activitu", 404);
+            if (activity == null) return Results<CommnetDTO>.Failure("Could not Found activity", 404);
 
             var user = await userAccessor.GetUserAsyncs();
 

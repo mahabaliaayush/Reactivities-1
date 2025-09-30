@@ -3,7 +3,7 @@ import { UseAccount } from "../../lib/hooks/useAccount"
 import { loginSchema, LoginSchema } from "../../lib/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Paper, Typography } from "@mui/material";
-import { LockOpen } from "@mui/icons-material";
+import { GitHub, LockOpen } from "@mui/icons-material";
 import TextInput from "../../app/layout/components/TextInput";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useState } from "react";
@@ -48,6 +48,13 @@ export default function LoginForm() {
             }
         })
     }
+
+    const loginWithgithub = () => {
+        const cliendId = import.meta.env.VITE_GITHUB_CLIENT_ID;
+        const redirectUrl = import.meta.env.VITE_REDIRECT_URL;
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${cliendId}&redirectUri=${redirectUrl}&scope=read:user user:emial`
+
+    }
     return (
         <Paper
             component='form'
@@ -80,6 +87,30 @@ export default function LoginForm() {
                 Login
 
             </Button>
+            <Button
+                onClick={loginWithgithub}
+                startIcon={<GitHub />}
+                type="button"
+                variant="contained"
+                size="large"
+                sx={{
+                    backgroundColor: '#24292f',  
+                    color: '#ffffff',             
+                    textTransform: 'none',       
+                    fontWeight: 500,
+                    borderRadius: '6px',
+                    padding: '8px 16px',
+                    '&:hover': {
+                        backgroundColor: '#000000', 
+                    },
+                    '&:active': {
+                        backgroundColor: '#1b1f23', 
+                    },
+                }}
+            >
+                Login with GitHub
+            </Button>
+
             {notVerified ? (
                 <Box display='flex' flexDirection='column' justifyContent='center'>
                     <Typography textAlign='center' color='error'>
